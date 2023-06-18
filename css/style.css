@@ -1,0 +1,116 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+body {
+  background-color: #000;
+}
+
+#header {
+  width: 100%;
+  color: #fff;
+}
+
+#header h1 {
+  padding: 32px;
+  text-align: center;
+  font-size: 42px;
+}
+
+#header p {
+  padding: 12px;
+  font-size: 22px;
+  text-align: center;
+  margin: 0 0 20px 0;
+}
+
+section#info {
+  width: 100%;
+  padding: 20px;
+  padding: 20px;
+  background-color: #fff;
+}
+
+#info form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+#info form .form-group {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  padding: 15px;
+  width: 20%;
+}
+
+#info form .form-group label {
+  font-size: 15px;
+}
+
+#info form .form-input {
+  width: 100%;
+  margin: 5px;
+  padding: 10px;
+  font-size: 20px;
+  border: 3px solid #000;
+  border-radius: 5px;
+}
+
+#info form .form-btn {
+  padding: 10px;
+  margin: 10px;
+}
+
+#info form .form-btn button {
+  font-size: 20px;
+  padding: 10px;
+  border: 3px solid #000;
+  width: 200px;
+  background-color: #ffbf00;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  -webkit-transition: background-color 0.3s ease;
+  -moz-transition: background-color 0.3s ease;
+  -ms-transition: background-color 0.3s ease;
+  -o-transition: background-color 0.3s ease;
+}
+
+#info form .form-btn button:hover {
+  background-color: #fafa26;
+}
+
+#info form .form-btn button:active {
+  background-color: #ffbf00;
+}
+
+section#root {
+  width: 100%;
+  padding: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: center;
+}
+
+.bar {
+  display: inline-block;
+  width: 20px;
+  margin-right: 2px;
+  background-color: #3267e2;
+}
+
+.highlight {
+  background-color: #ffbf00;
+}

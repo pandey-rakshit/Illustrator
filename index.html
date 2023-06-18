@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Visualization | Sorting Algorithms</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <section id="header">
+      <h1>Visualization of Sorting Algorithms</h1>
+      <p>Lets see how Amazing is the working of javascript</p>
+    </section>
+    <section id="info">
+      <form action="#" method="#" id="sort-form">
+        <div class="form-group">
+          <label for="arrayLength" class="form-label">Array Length</label>
+          <input
+            id="arrayLength"
+            class="form-input"
+            name="arrayLength"
+            type="number"
+            min="1"
+            value="10"
+            placeholder="Array Length"
+          />
+        </div>
+        <div class="form-group">
+          <label for="chooseSortingAlgorithm" class="form-label"
+            >Sorting Algorithm</label
+          >
+          <select
+            name="sortingAlgorithm"
+            id="sortingAlgorithm"
+            class="form-input"
+            required
+          >
+            <option value="BubbleSort" selected>BubbleSort</option>
+          </select>
+        </div>
+        <div class="form-btn">
+          <button class="btn" id="generateArray">Submit</button>
+        </div>
+      </form>
+    </section>
+    <section id="root"></section>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
