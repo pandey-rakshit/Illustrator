@@ -95,6 +95,13 @@ section#info {
   background-color: #ffbf00;
 }
 
+#info form .form-btn button:disabled {
+  background-color: #747780;
+  color: #000;
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 section#root {
   width: 100%;
   padding: 30px;

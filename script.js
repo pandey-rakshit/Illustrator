@@ -1,6 +1,7 @@
 const submitButton = document.getElementById("generateArray");
 const form = document.getElementById("sort-form");
 const root = document.getElementById("root");
+let isSorting = false;
 
 const createElement = (type) => {
   return document.createElement(type);
@@ -77,6 +78,8 @@ const BubbleSort = async (array) => {
       break;
     }
   }
+  isSorting = false;
+  submitButton.disabled = false;
 };
 
 const implementation = {
@@ -89,10 +92,15 @@ const sortingAlgorithm = (array, algo) => {
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
-  const arrayLength = parseInt(document.getElementById("arrayLength").value);
-  const algo = document.getElementById("sortingAlgorithm").value;
-  const array = generateArray(arrayLength);
-  createBars(array);
-  sortingAlgorithm(array, algo);
-  form.reset();
+  if (!isSorting) {
+    isSorting = true;
+    submitButton.disabled = true;
+    clearRoot();
+    const arrayLength = parseInt(document.getElementById("arrayLength").value);
+    const algo = document.getElementById("sortingAlgorithm").value;
+    const array = generateArray(arrayLength);
+    createBars(array);
+    sortingAlgorithm(array, algo);
+    form.reset();
+  }
 });
