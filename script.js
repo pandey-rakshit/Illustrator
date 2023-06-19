@@ -94,8 +94,27 @@ const BubbleSort = async (array) => {
   submitButton.disabled = false;
 };
 
+const SelectionSort = async (array) => {
+  for (let i = 0; i < array.length - 1; i++) {
+    for (let j = i + 1; j < array.length; j++) {
+      highlightBar(i, j);
+      if (Compression(array[i], array[j])) {
+        const temp = array[j];
+        array[j] = array[i];
+        array[i] = temp;
+        swapBars(i, j);
+      }
+      await sleep(500);
+      resetBars(i, j);
+    }
+  }
+  isSorting = false;
+  submitButton.disabled = false;
+};
+
 const implementation = {
   BubbleSort: BubbleSort,
+  SelectionSort: SelectionSort,
 };
 
 const sortingAlgorithm = (array, algo) => {
