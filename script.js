@@ -44,6 +44,20 @@ const swapBars = (index1, index2) => {
   bars[index2].style.height = tempHeight;
 };
 
+const inheritBarProperty = (parent, child) => {
+  const bars = root.children;
+  bars[child].style.height = bars[parent].style.height;
+};
+
+const calculateBarHeight = (array, key) => {
+  return (key / Math.max(...array)) * 200;
+};
+
+const updateBarProperty = (index, value) => {
+  const bars = root.children;
+  bars[index].style.height = value + "px";
+};
+
 const resetBars = (...index) => {
   const bars = root.children;
   for (let i of index) {
@@ -112,9 +126,35 @@ const SelectionSort = async (array) => {
   submitButton.disabled = false;
 };
 
+const InsertionSort = async (array) => {
+  for (let i = 1; i < array.length; i++) {
+    let key = array[i];
+    let j = i - 1;
+    highlightBar(i);
+    while (j >= 0 && Compression(array[j], key)) {
+      array[j + 1] = array[j];
+      highlightBar(j + 1);
+      inheritBarProperty(j, j + 1);
+      await sleep(500);
+      resetBars(j + 1);
+      highlightBar(i);
+      j = j - 1;
+    }
+    array[j + 1] = key;
+    const value = calculateBarHeight(array, key);
+    highlightBar(j + 1);
+    updateBarProperty(j + 1, value);
+    await sleep(500);
+    resetBars(i, j + 1);
+  }
+  isSorting = false;
+  submitButton.disabled = false;
+};
+
 const implementation = {
   BubbleSort: BubbleSort,
   SelectionSort: SelectionSort,
+  InsertionSort: InsertionSort,
 };
 
 const sortingAlgorithm = (array, algo) => {
@@ -133,6 +173,5 @@ form.addEventListener("submit", (event) => {
     const array = generateArray(arrayLength);
     createBars(array);
     sortingAlgorithm(array, algo);
-    form.reset();
   }
 });
