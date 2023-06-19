@@ -3,6 +3,8 @@ const form = document.getElementById("sort-form");
 const root = document.getElementById("root");
 let isSorting = false;
 
+let sortOrder = "asc";
+
 const createElement = (type) => {
   return document.createElement(type);
 };
@@ -28,10 +30,11 @@ const createBars = (array) => {
   }
 };
 
-const highlightBar = (index) => {
-  const bar = root.children;
-  bar[index].classList.add("highlight");
-  bar[index + 1].classList.add("highlight");
+const highlightBar = (...index) => {
+  const bars = root.children;
+  for (let i of index) {
+    bars[i].classList.add("highlight");
+  }
 };
 
 const swapBars = (index1, index2) => {
@@ -41,10 +44,11 @@ const swapBars = (index1, index2) => {
   bars[index2].style.height = tempHeight;
 };
 
-const resetBars = (index) => {
+const resetBars = (...index) => {
   const bars = root.children;
-  bars[index].classList.remove("highlight");
-  bars[index + 1].classList.remove("highlight");
+  for (let i of index) {
+    bars[i].classList.remove("highlight");
+  }
 };
 
 const generateArray = (len) => {
@@ -59,12 +63,20 @@ const sleep = (ms) => {
   return new Promise((resolve) => setTimeout(resolve, ms));
 };
 
+const ascendingCompression = (a, b) => a > b;
+const descendingCompression = (a, b) => a < b;
+
+const Compression = (a, b) =>
+  sortOrder === "asc"
+    ? ascendingCompression(a, b)
+    : descendingCompression(a, b);
+
 const BubbleSort = async (array) => {
   for (let i = 0; i < array.length; i++) {
     let isSwapped = false;
     for (let j = 0; j < array.length - i - 1; j++) {
-      highlightBar(j);
-      if (array[j] > array[j + 1]) {
+      highlightBar(j, j + 1);
+      if (Compression(array[j], array[j + 1])) {
         const temp = array[j];
         array[j] = array[j + 1];
         array[j + 1] = temp;
@@ -72,7 +84,7 @@ const BubbleSort = async (array) => {
         swapBars(j, j + 1);
       }
       await sleep(500);
-      resetBars(j);
+      resetBars(j, j + 1);
     }
     if (!isSwapped) {
       break;
@@ -98,6 +110,7 @@ form.addEventListener("submit", (event) => {
     clearRoot();
     const arrayLength = parseInt(document.getElementById("arrayLength").value);
     const algo = document.getElementById("sortingAlgorithm").value;
+    sortOrder = document.getElementById("sortOrder").value;
     const array = generateArray(arrayLength);
     createBars(array);
     sortingAlgorithm(array, algo);

@@ -26,7 +26,7 @@
           />
         </div>
         <div class="form-group">
-          <label for="chooseSortingAlgorithm" class="form-label"
+          <label for="sortingAlgorithm" class="form-label"
             >Sorting Algorithm</label
           >
           <select
@@ -38,12 +38,20 @@
             <option value="BubbleSort" selected>BubbleSort</option>
           </select>
         </div>
+        <div class="form-group">
+          <label for="sortOrder" class="form-label">Sorting Order</label>
+          <select name="sortOrder" id="sortOrder" class="form-input" required>
+            <option value="asc" selected>Ascending</option>
+            <option value="desc">Descending</option>
+          </select>
+        </div>
         <div class="form-btn">
           <button class="btn" id="generateArray">Submit</button>
         </div>
       </form>
     </section>
     <section id="root"></section>
+    <section id="brief"></section>
 
     <script src="./script.js"></script>
   </body>
