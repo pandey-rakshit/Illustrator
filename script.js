@@ -23,6 +23,7 @@ const createBars = (array) => {
   clearRoot();
   for (let i = 0; i < array.length; i++) {
     const barHeight = (array[i] / Math.max(...array)) * 200;
+
     const div = createElement("div");
     div.classList.add("bar");
     div.style.height = barHeight + "px";
